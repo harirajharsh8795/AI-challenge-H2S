@@ -1,0 +1,23 @@
+steps:
+  # Step 1: Install required python dependencies
+  - name: 'python:3.12'
+    id: 'Install Dependencies'
+    entrypoint: 'pip'
+    args: ['install', '-r', 'requirements.txt']
+
+  # Step 2: Execute the verification script
+  - name: 'python:3.12'
+    id: 'Verify Pipeline Installation'
+    entrypoint: 'python'
+    args: ['verify_install.py']
+    env:
+      - 'GEMINI_API_KEY=$_GEMINI_API_KEY'
+      - 'GCP_PROJECT=$PROJECT_ID'
+      - 'GCP_LOCATION=$_GCP_LOCATION'
+
+substitutions:
+  _GCP_LOCATION: 'us-central1'
+  _GEMINI_API_KEY: ''
+
+options:
+  logging: CLOUD_LOGGING_ONLY

@@ -18,3 +18,10 @@ models/
 .idea/
 .DS_Store
 Thumbs.db
+logs/
+venv/
+.env
+.venv
+env/
+ENV/
+
