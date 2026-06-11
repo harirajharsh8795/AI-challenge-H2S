@@ -1,0 +1,23 @@
+pipeline:
+  current_date: "2026-06-04"
+  random_seed: 42
+
+models:
+  embedding_model: "all-MiniLM-L6-v2"
+  cross_encoder_model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  device: "cpu"
+
+retrieval:
+  stage1_top_k: 2000
+  stage2_top_k: 500
+  final_top_k: 100
+  min_experience_years: 5.0
+  max_experience_years: 9.0
+
+weights:
+  semantic_match: 35
+  experience_fit: 15
+  product_company: 15
+  behavioral_signals: 15
+  preferred_skills: 10
+  location: 10
