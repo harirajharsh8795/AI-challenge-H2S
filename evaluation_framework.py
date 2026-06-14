@@ -1,3 +1,7 @@
+# NOTE: The NDCG/MRR metrics below measure INTERNAL RANKING COHERENCE
+# (pipeline sorts correctly per its own heuristics). For independent
+# human-proxy evaluation, see llm_judge_eval.py (Gemini-as-Judge).
+
 import os
 import sys
 import csv
