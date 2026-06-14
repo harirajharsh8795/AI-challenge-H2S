@@ -25,3 +25,7 @@ venv/
 env/
 ENV/
 
+
+# Allow submission output
+!data/processed/
+!data/processed/submission.csv
