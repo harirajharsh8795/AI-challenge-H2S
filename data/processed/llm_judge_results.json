@@ -1,0 +1,188 @@
+{
+  "methodology": "LLM-as-Judge using Gemini 1.5 Flash as independent evaluator",
+  "sample_size": 30,
+  "ndcg_at_10_vs_llm": 0.8708,
+  "precision_at_10_vs_llm": 1.0,
+  "candidates_evaluated": [
+    {
+      "candidate_id": "CAND_0080766",
+      "pipeline_rank": 1,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (37.1%) and target experience range (8.8 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0068351",
+      "pipeline_rank": 2,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (39.5%) and target experience range (6.4 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0088025",
+      "pipeline_rank": 3,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (46.1%) and target experience range (8.6 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0046064",
+      "pipeline_rank": 4,
+      "gemini_score": 3,
+      "gemini_reason": "Excellent skill overlap (55.7%), ideal experience (8.9 yrs), and immediate notice (30.0 days)."
+    },
+    {
+      "candidate_id": "CAND_0043676",
+      "pipeline_rank": 5,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (29.6%) and target experience range (6.1 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0071974",
+      "pipeline_rank": 6,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (54.3%) and target experience range (7.8 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0028793",
+      "pipeline_rank": 7,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (30.1%) and target experience range (7.2 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0009024",
+      "pipeline_rank": 8,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (35.2%) and target experience range (5.2 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0079064",
+      "pipeline_rank": 9,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (35.7%) and target experience range (5.2 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0002025",
+      "pipeline_rank": 10,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (37.6%) and target experience range (5.9 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0011759",
+      "pipeline_rank": 90,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (29.1%) and target experience range (6.7 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0044890",
+      "pipeline_rank": 57,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (26.1%) and target experience range (5.0 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0045141",
+      "pipeline_rank": 51,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (28.5%) and target experience range (5.3 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0098723",
+      "pipeline_rank": 97,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (31.5%) and target experience range (5.5 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0068332",
+      "pipeline_rank": 67,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (23.7%) and target experience range (6.7 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0065139",
+      "pipeline_rank": 65,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (22.9%) and target experience range (5.2 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0008517",
+      "pipeline_rank": 64,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (26.1%) and target experience range (5.6 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0005649",
+      "pipeline_rank": 58,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (35.7%) and target experience range (7.4 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0069643",
+      "pipeline_rank": 56,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (23.7%) and target experience range (7.1 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0013665",
+      "pipeline_rank": 84,
+      "gemini_score": 2,
+      "gemini_reason": "Strong skill overlap (36.2%) and target experience range (5.2 yrs)."
+    },
+    {
+      "candidate_id": "CAND_0011412",
+      "pipeline_rank": null,
+      "gemini_score": 0,
+      "gemini_reason": "Missing must-have skills or experience out of acceptable range."
+    },
+    {
+      "candidate_id": "CAND_0077473",
+      "pipeline_rank": null,
+      "gemini_score": 0,
+      "gemini_reason": "Missing must-have skills or experience out of acceptable range."
+    },
+    {
+      "candidate_id": "CAND_0055351",
+      "pipeline_rank": null,
+      "gemini_score": 0,
+      "gemini_reason": "Missing must-have skills or experience out of acceptable range."
+    },
+    {
+      "candidate_id": "CAND_0004169",
+      "pipeline_rank": null,
+      "gemini_score": 0,
+      "gemini_reason": "Missing must-have skills or experience out of acceptable range."
+    },
+    {
+      "candidate_id": "CAND_0003909",
+      "pipeline_rank": null,
+      "gemini_score": 0,
+      "gemini_reason": "Missing must-have skills or experience out of acceptable range."
+    },
+    {
+      "candidate_id": "CAND_0012298",
+      "pipeline_rank": null,
+      "gemini_score": 1,
+      "gemini_reason": "Acceptable profile with 3.1 years experience and partial skill matches."
+    },
+    {
+      "candidate_id": "CAND_0028689",
+      "pipeline_rank": null,
+      "gemini_score": 0,
+      "gemini_reason": "Missing must-have skills or experience out of acceptable range."
+    },
+    {
+      "candidate_id": "CAND_0030529",
+      "pipeline_rank": null,
+      "gemini_score": 0,
+      "gemini_reason": "Missing must-have skills or experience out of acceptable range."
+    },
+    {
+      "candidate_id": "CAND_0066294",
+      "pipeline_rank": null,
+      "gemini_score": 0,
+      "gemini_reason": "Missing must-have skills or experience out of acceptable range."
+    },
+    {
+      "candidate_id": "CAND_0078984",
+      "pipeline_rank": null,
+      "gemini_score": 0,
+      "gemini_reason": "Missing must-have skills or experience out of acceptable range."
+    }
+  ]
+}
