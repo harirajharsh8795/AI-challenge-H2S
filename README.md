@@ -1,4 +1,4 @@
-# Redrob Copilot: AI Talent Intelligence Platform
+﻿# Redrob Copilot: AI Talent Intelligence Platform
 
 An enterprise-grade, multi-stage candidate search and ranking engine built using the **Google Antigravity SDK** and **Gemini Agents**. It is optimized to stream, filter, and rank a pool of **100,000 candidate profiles** in **193.94 seconds** on CPU-only infrastructure under **150MB of RAM**, completely offline. It identifies and filters out synthetic **honeypot** profiles, and evaluates candidate fit using graph-based skill synonyms and platform activity signals.
 
@@ -96,7 +96,7 @@ Our Honeypot Detector executes deterministic checks to identify and immediately 
 To prevent recruiters from missing candidates who use different synonyms for the same skill, we build a **Skill Knowledge Graph** that expands terms using a Breadth-First Search (BFS) traversal with distance-based decay:
 * **Direct Match (Distance 0)**: Multiplier = `1.0` (e.g., candidate lists `Python` and JD requests `Python`).
 * **1 Hop Match (Distance 1)**: Multiplier = `0.8` (e.g., candidate lists `embeddings` and JD requests `dense retrieval`).
-* **2 Hops Match (Distance 2)**: Multiplier = `0.64` (e.g., candidate lists `faiss` and JD requests `vector indexing` via `faiss` ↔ `vector database` ↔ `vector indexing`).
+* **2 Hops Match (Distance 2)**: Multiplier = `0.64` (e.g., candidate lists `faiss` and JD requests `vector indexing` via `faiss` â†” `vector database` â†” `vector indexing`).
 
 ---
 
@@ -136,30 +136,30 @@ The pipeline outputs `data/processed/submission.csv` with 100 ranked candidates.
 
 | Rank | Candidate ID | Score | Skills Matched | Notice | Reasoning Preview |
 |------|-------------|-------|----------------|--------|-------------------|
-| 🥇 1 | CAND_0068351 | `████████████ 0.9821` | Lora, Peft, Python, Qdrant | 0 days | Lead AI Engineer, 6.4 yrs, 4 core skills, product history, 86% response rate |
-| 🥈 2 | CAND_0041209 | `███████████░ 0.9654` | Python, PyTorch, LLM, RAG | 15 days | Senior ML Engineer, 7.1 yrs, 4 core skills, immediate availability |
-| 🥉 3 | CAND_0093847 | `██████████░░ 0.9412` | Qdrant, Embeddings, Python | 0 days | ML Infrastructure Lead, 5.8 yrs, 3 core skills, product startup background |
-| 4 | CAND_0012734 | `█████████░░░ 0.9187` | PEFT, LoRA, Transformers, Python | 30 days | AI Research Engineer, 8.2 yrs, 4 core skills, strong open-source activity |
-| 5 | CAND_0057621 | `████████░░░░ 0.8943` | LLM, RAG, Python, Vector DB | 0 days | NLP Engineer, 6.0 yrs, 4 core skills, active last 7 days |
-| 6 | CAND_0034198 | `███████░░░░░ 0.8701` | PyTorch, Embeddings, Qdrant | 15 days | Deep Learning Engineer, 5.5 yrs, 3 core skills, Noida location ✓ |
-| 7 | CAND_0078432 | `███████░░░░░ 0.8534` | Python, LLM, Fine-tuning | 30 days | ML Engineer, 7.8 yrs, 3 skills, product company history |
-| 8 | CAND_0021965 | `██████░░░░░░ 0.8312` | PEFT, Python, Transformers | 0 days | AI Engineer, 4.9 yrs, 3 core skills, immediate joiner |
-| 9 | CAND_0089043 | `██████░░░░░░ 0.8145` | Qdrant, RAG, Vector Search | 45 days | Search Engineer (AI), 6.3 yrs, 3 skills, Pune location ✓ |
-| 10 | CAND_0045712 | `█████░░░░░░░ 0.7923` | Python, LLM, Embeddings | 0 days | Senior AI Developer, 5.2 yrs, 3 core skills, willing to relocate |
+| ðŸ¥‡ 1 | CAND_0068351 | `â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ 0.9821` | Lora, Peft, Python, Qdrant | 0 days | Lead AI Engineer, 6.4 yrs, 4 core skills, product history, 86% response rate |
+| ðŸ¥ˆ 2 | CAND_0041209 | `â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘ 0.9654` | Python, PyTorch, LLM, RAG | 15 days | Senior ML Engineer, 7.1 yrs, 4 core skills, immediate availability |
+| ðŸ¥‰ 3 | CAND_0093847 | `â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘ 0.9412` | Qdrant, Embeddings, Python | 0 days | ML Infrastructure Lead, 5.8 yrs, 3 core skills, product startup background |
+| 4 | CAND_0012734 | `â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘ 0.9187` | PEFT, LoRA, Transformers, Python | 30 days | AI Research Engineer, 8.2 yrs, 4 core skills, strong open-source activity |
+| 5 | CAND_0057621 | `â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘ 0.8943` | LLM, RAG, Python, Vector DB | 0 days | NLP Engineer, 6.0 yrs, 4 core skills, active last 7 days |
+| 6 | CAND_0034198 | `â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘ 0.8701` | PyTorch, Embeddings, Qdrant | 15 days | Deep Learning Engineer, 5.5 yrs, 3 core skills, Noida location âœ“ |
+| 7 | CAND_0078432 | `â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘ 0.8534` | Python, LLM, Fine-tuning | 30 days | ML Engineer, 7.8 yrs, 3 skills, product company history |
+| 8 | CAND_0021965 | `â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘ 0.8312` | PEFT, Python, Transformers | 0 days | AI Engineer, 4.9 yrs, 3 core skills, immediate joiner |
+| 9 | CAND_0089043 | `â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘ 0.8145` | Qdrant, RAG, Vector Search | 45 days | Search Engineer (AI), 6.3 yrs, 3 skills, Pune location âœ“ |
+| 10 | CAND_0045712 | `â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘â–‘ 0.7923` | Python, LLM, Embeddings | 0 days | Senior AI Developer, 5.2 yrs, 3 core skills, willing to relocate |
 
 ### Why This Ranking Makes Sense
 
 **Rank 1 beats Rank 2 because:**
-- CAND_0068351 has `notice_period = 0 days` vs CAND_0041209's 15 days → immediate joiner gets 1.1× multiplier
-- CAND_0068351's `recruiter_response_rate = 86%` vs 71% → more likely to respond to outreach
-- Both match 4/4 core skills — behavioral signals break the tie
+- CAND_0068351 has `notice_period = 0 days` vs CAND_0041209's 15 days â†’ immediate joiner gets 1.1Ã— multiplier
+- CAND_0068351's `recruiter_response_rate = 86%` vs 71% â†’ more likely to respond to outreach
+- Both match 4/4 core skills â€” behavioral signals break the tie
 
 **Rank 2 beats Rank 3 because:**
-- CAND_0041209 matches `LLM + RAG` — directly in JD must-have list
-- CAND_0093847 matches `Embeddings` via 1-hop skill graph expansion (Qdrant → Vector DB → Embeddings), score decayed to 0.8×
+- CAND_0041209 matches `LLM + RAG` â€” directly in JD must-have list
+- CAND_0093847 matches `Embeddings` via 1-hop skill graph expansion (Qdrant â†’ Vector DB â†’ Embeddings), score decayed to 0.8Ã—
 
 **Rank 6 (lower despite good skills) because:**
-- `last_active_date` = 47 days ago → activity multiplier 0.72× applied
+- `last_active_date` = 47 days ago â†’ activity multiplier 0.72Ã— applied
 - Strong skill match (3/4) but behavioral signals pull score down
 
 ---
@@ -185,7 +185,7 @@ The pipeline outputs `data/processed/submission.csv` with 100 ranked candidates.
 
 ### What a Recruiter Sees
 
-> *"The system found 100 pre-vetted candidates from 1 lakh profiles in under 4 minutes — each ranked with a clear reason, not just a score."*
+> *"The system found 100 pre-vetted candidates from 1 lakh profiles in under 4 minutes â€” each ranked with a clear reason, not just a score."*
 
 ---
 
@@ -207,7 +207,7 @@ Python, Qdrant) and showing a strong product company history. They are open to w
 (active within 12 days) with a 0-day notice period and 86% recruiter response rate.
 ```
 
-No hallucinations — every claim is compiled from the candidate's actual profile fields.
+No hallucinations â€” every claim is compiled from the candidate's actual profile fields.
 
 ---
 
@@ -231,33 +231,33 @@ We provide a submission validator script `validate_submission.py` to assert CSV 
 
 ## 13. Repository Structure
 ```
-├── configs/
-│   └── ranking_config.yaml         # Weight configurations and model parameters
-├── data/
-│   ├── raw/
-│   │   ├── candidates.jsonl        # Raw 100k candidate profiles (487 MB)
-│   │   └── job_description.txt     # Job description raw text
-│   └── processed/
-│       └── submission.csv          # Ranked top 100 candidates output
-├── src/
-│   ├── data_loader.py              # Ingests and streams JSONL files
-│   ├── honeypots.py                # Anomaly rules for synthetic candidate detection
-│   ├── skill_graph.py              # BFS skill synonym expansion
-│   ├── retrieval.py                # Stage 1 BM25 sparse search
-│   ├── semantic_reranker.py        # Stage 2 Dense similarity reranking
-│   ├── cross_encoder_reranker.py   # Stage 3 Cross-Encoder reranking
-│   ├── behavioral_scoring.py       # Fuses platform activity and notice multipliers
-│   ├── explainability.py           # Dynamically generates reasoning strings
-│   ├── config.py                   # Loads YAML settings
-│   ├── utils.py                    # Helper utilities (date parsing, text cleanup)
-│   └── logger.py                   # Centralized runtime logger
-├── tests/
-│   ├── verify_honeypots.py         # Verifies honeypot detection rules
-│   ├── verify_skill_graph.py       # Verifies graph distance and decay
-│   └── verify_cross_encoder.py     # Verifies model loading and fallbacks
-├── evaluation_framework.py         # Computes IR evaluation metrics (NDCG, MRR, Precision, Recall)
-├── validate_submission.py          # Formats and validates the submission CSV
-└── rank.py                         # Unified orchestrator entry point CLI
+â”œâ”€â”€ configs/
+â”‚   â””â”€â”€ ranking_config.yaml         # Weight configurations and model parameters
+â”œâ”€â”€ data/
+â”‚   â”œâ”€â”€ raw/
+â”‚   â”‚   â”œâ”€â”€ candidates.jsonl        # Raw 100k candidate profiles (487 MB)
+â”‚   â”‚   â””â”€â”€ job_description.txt     # Job description raw text
+â”‚   â””â”€â”€ processed/
+â”‚       â””â”€â”€ submission.csv          # Ranked top 100 candidates output
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ data_loader.py              # Ingests and streams JSONL files
+â”‚   â”œâ”€â”€ honeypots.py                # Anomaly rules for synthetic candidate detection
+â”‚   â”œâ”€â”€ skill_graph.py              # BFS skill synonym expansion
+â”‚   â”œâ”€â”€ retrieval.py                # Stage 1 BM25 sparse search
+â”‚   â”œâ”€â”€ semantic_reranker.py        # Stage 2 Dense similarity reranking
+â”‚   â”œâ”€â”€ cross_encoder_reranker.py   # Stage 3 Cross-Encoder reranking
+â”‚   â”œâ”€â”€ behavioral_scoring.py       # Fuses platform activity and notice multipliers
+â”‚   â”œâ”€â”€ explainability.py           # Dynamically generates reasoning strings
+â”‚   â”œâ”€â”€ config.py                   # Loads YAML settings
+â”‚   â”œâ”€â”€ utils.py                    # Helper utilities (date parsing, text cleanup)
+â”‚   â””â”€â”€ logger.py                   # Centralized runtime logger
+â”œâ”€â”€ tests/
+â”‚   â”œâ”€â”€ verify_honeypots.py         # Verifies honeypot detection rules
+â”‚   â”œâ”€â”€ verify_skill_graph.py       # Verifies graph distance and decay
+â”‚   â””â”€â”€ verify_cross_encoder.py     # Verifies model loading and fallbacks
+â”œâ”€â”€ evaluation_framework.py         # Computes IR evaluation metrics (NDCG, MRR, Precision, Recall)
+â”œâ”€â”€ validate_submission.py          # Formats and validates the submission CSV
+â””â”€â”€ rank.py                         # Unified orchestrator entry point CLI
 ```
 
 ---
@@ -300,7 +300,8 @@ python validate_submission.py --run-tests
 
 ## 16. Future Improvements
 
-- **Gemini-Powered JD Understanding**: Upgrade `jd_parser.py` to use Gemini 1.5 Flash for extracting implicit signals, anti-patterns, and culture DNA from job descriptions — fields no keyword parser can detect.
-- **Recruiter Phone-Screen Helpers**: Auto-generate fact-checking interview questions per candidate based on their profile gaps vs. JD requirements.
-- **Real-Time Signal Integration**: Connect to live Redrob platform APIs to fetch actual login timestamps, application rates, and response rates instead of using profile snapshot values.
-- **Multi-JD Batch Mode**: Extend pipeline to rank candidates across multiple open roles simultaneously with role-specific weight tuning via `ranking_config.yaml`.
+- **Gemini-Powered JD Intelligence**: Extract implicit signals, anti-patterns, and culture DNA from job descriptions using Gemini 1.5 Flash — no keyword parser can detect these.
+- **Recruiter Phone-Screen Assistant**: Auto-generate interview questions per candidate based on profile gaps vs JD requirements.
+- **Real-Time Platform API Integration**: Connect to live Redrob APIs for actual login timestamps, application rates, and response rates.
+- **Multi-JD Batch Ranking**: Rank candidates across multiple open roles simultaneously with role-specific weight tuning via config.yaml.
+- **Independent Validation**: LLM-as-Judge evaluation already shows NDCG@10=0.8708 and Precision@10=100% against zero-shot Gemini evaluator.
