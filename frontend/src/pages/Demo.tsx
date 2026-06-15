@@ -6,6 +6,7 @@ import { PipelineVisualizer } from "../components/demo/PipelineVisualizer";
 import { SearchFilterBar } from "../components/demo/SearchFilterBar";
 import { CandidateCard } from "../components/demo/CandidateCard";
 import { ScoreModal } from "../components/demo/ScoreModal";
+import { HeroCard } from "../components/demo/HeroCard";
 
 const ApiStatus: React.FC<{ isLive: boolean }> = ({ isLive }) => (
   <div className={`flex items-center gap-1.5 text-[9px] font-extrabold px-3 py-1 rounded-full border ${
@@ -125,14 +126,24 @@ export const Demo: React.FC = () => {
             No candidates match the specified search filters. Try relaxing your constraints.
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredCandidates.map((cand) => (
-              <CandidateCard 
-                key={cand.candidate_id} 
-                candidate={cand} 
-                onClick={() => setSelectedCandidate(cand)}
+          <div className="space-y-6">
+            {/* FEATURE 2: Rank #1 Hero Card */}
+            {filteredCandidates.length > 0 && (
+              <HeroCard 
+                candidate={filteredCandidates[0]} 
+                onClick={() => setSelectedCandidate(filteredCandidates[0])}
               />
-            ))}
+            )}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredCandidates.slice(1).map((cand) => (
+                <CandidateCard 
+                  key={cand.candidate_id} 
+                  candidate={cand} 
+                  onClick={() => setSelectedCandidate(cand)}
+                />
+              ))}
+            </div>
           </div>
         )}
       </div>

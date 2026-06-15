@@ -6,9 +6,12 @@ import { Dashboard } from "./pages/Dashboard";
 import { Validator } from "./pages/Validator";
 import { Architecture } from "./pages/Architecture";
 import { Activity } from "lucide-react";
+import { LoadingScreen } from "./components/LoadingScreen";
+import { MetricsStrip } from "./components/MetricsStrip";
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("landing");
+  const [loaded, setLoaded] = useState(false);
 
   const renderWorkspaceContent = () => {
     switch (activeTab) {
@@ -24,6 +27,11 @@ const App: React.FC = () => {
         return <Demo />;
     }
   };
+
+  // Render Loading Screen first on app start
+  if (!loaded) {
+    return <LoadingScreen onComplete={() => setLoaded(true)} />;
+  }
 
   // 1. Landing Page Mode (Public Marketing Page - Full Width)
   if (activeTab === "landing") {
@@ -61,10 +69,13 @@ const App: React.FC = () => {
         </header>
 
         {/* Dynamic workspace panels */}
-        <div className="min-h-[calc(100vh-140px)] flex flex-col pr-6">
+        <div className="min-h-[calc(100vh-140px)] flex flex-col pr-6 pb-16">
           {renderWorkspaceContent()}
         </div>
       </main>
+
+      {/* Sticky Bottom validation metrics strip */}
+      <MetricsStrip />
     </div>
   );
 };
