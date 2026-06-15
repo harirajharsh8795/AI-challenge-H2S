@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { StatsAPI } from "../../api";
 
-export const LiveFunnelCounter: React.FC = () => {
+interface LiveFunnelCounterProps {
+  stats: StatsAPI | null;
+}
+
+export const LiveFunnelCounter: React.FC<LiveFunnelCounterProps> = ({ stats }) => {
   const [profiles, setProfiles] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [shortlist, setShortlist] = useState(0);
   const [ram, setRam] = useState(0);
+
+  // Targets from stats prop
+  const targetProfiles = stats?.total_ingested ?? 100000;
+  const targetSeconds = stats?.runtime_seconds ?? 193.94;
+  const targetShortlist = stats?.final_shortlist ?? 100;
+  const targetRam = stats?.peak_memory_mb ?? 128;
 
   useEffect(() => {
     const duration = 2000; // 2 seconds
@@ -17,10 +28,10 @@ export const LiveFunnelCounter: React.FC = () => {
       // Easing function (easeOutQuad)
       const ease = progress * (2 - progress);
 
-      setProfiles(Math.floor(ease * 100000));
-      setSeconds(parseFloat((ease * 193.94).toFixed(2)));
-      setShortlist(Math.floor(ease * 100));
-      setRam(Math.floor(ease * 128)); // Displays local run ram constraint, e.g. 128MB
+      setProfiles(Math.floor(ease * targetProfiles));
+      setSeconds(parseFloat((ease * targetSeconds).toFixed(2)));
+      setShortlist(Math.floor(ease * targetShortlist));
+      setRam(Math.floor(ease * targetRam));
 
       if (progress < 1) {
         requestAnimationFrame(animate);
@@ -28,7 +39,7 @@ export const LiveFunnelCounter: React.FC = () => {
     };
 
     requestAnimationFrame(animate);
-  }, []);
+  }, [stats, targetProfiles, targetSeconds, targetShortlist, targetRam]);
 
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full mb-6">

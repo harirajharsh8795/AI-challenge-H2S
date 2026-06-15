@@ -1,31 +1,89 @@
-import React, { useState } from "react";
-import { candidatesData, Candidate } from "../data";
+import React, { useState, useEffect } from "react";
+import { Candidate } from "../data";
+import { fetchCandidates, fetchStats, CandidateAPI, StatsAPI, enrichCandidate } from "../api";
 import { LiveFunnelCounter } from "../components/demo/LiveFunnelCounter";
 import { PipelineVisualizer } from "../components/demo/PipelineVisualizer";
 import { SearchFilterBar } from "../components/demo/SearchFilterBar";
 import { CandidateCard } from "../components/demo/CandidateCard";
 import { ScoreModal } from "../components/demo/ScoreModal";
 
+const ApiStatus: React.FC<{ isLive: boolean }> = ({ isLive }) => (
+  <div className={`flex items-center gap-1.5 text-[9px] font-extrabold px-3 py-1 rounded-full border ${
+    isLive 
+      ? "bg-green-500/10 border-green-500/20 text-green-400" 
+      : "bg-amber-500/10 border-amber-500/20 text-amber-400"
+  }`}>
+    <div className={`w-1.5 h-1.5 rounded-full ${isLive ? "bg-green-400 animate-pulse" : "bg-amber-400"}`} />
+    {isLive ? "API CONNECTED" : "OFFLINE FALLBACK"}
+  </div>
+);
+
 export const Demo: React.FC = () => {
+  const [apiCandidates, setApiCandidates] = useState<CandidateAPI[]>([]);
+  const [stats, setStats] = useState<StatsAPI | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [isLive, setIsLive] = useState(false);
+
   const [filters, setFilters] = useState({ search: "", notice: "all", minScore: 0.95 });
   const [selectedCandidate, setSelectedCandidate] = useState<Candidate | null>(null);
+
+  useEffect(() => {
+    const apiBase = import.meta.env.VITE_API_URL || "http://localhost:8000";
+    let isApiLive = true;
+
+    // Direct check if uvicorn API endpoint is reachable
+    fetch(`${apiBase}/`)
+      .then((res) => {
+        if (!res.ok) isApiLive = false;
+      })
+      .catch(() => {
+        isApiLive = false;
+      })
+      .finally(() => {
+        Promise.all([fetchCandidates(), fetchStats()])
+          .then(([cands, st]) => {
+            setApiCandidates(cands);
+            setStats(st);
+            setIsLive(isApiLive);
+            setLoading(false);
+          })
+          .catch(() => {
+            setIsLive(false);
+            setLoading(false);
+          });
+      });
+  }, []);
 
   const handleFilterChange = (newFilters: { search: string; notice: string; minScore: number }) => {
     setFilters(newFilters);
   };
 
-  // Dynamic real-time filter computations
-  const filteredCandidates = candidatesData.filter((cand) => {
-    // Minimum score slider boundary
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-96 w-full gap-3">
+        <div className="w-8 h-8 rounded-full border-2 border-brand-orange border-t-transparent animate-spin" />
+        <div className="text-brand-orange animate-pulse text-xs font-bold tracking-wider uppercase">
+          Connecting to Redrob Copilot API...
+        </div>
+      </div>
+    );
+  }
+
+  // Map backend raw records to full-fidelity UI Candidate items
+  const enrichedList = apiCandidates.map(enrichCandidate);
+
+  // Dynamic filter logic
+  const filteredCandidates = enrichedList.filter((cand) => {
+    // Score boundary check
     if (cand.score < filters.minScore) return false;
 
-    // Notice period categorization matching
+    // Notice category check
     if (filters.notice !== "all") {
       const targetNotice = parseInt(filters.notice, 10);
       if (cand.notice_period !== targetNotice) return false;
     }
 
-    // Smart string text search over skills list, headline, and reasoning dossier strings
+    // Keyword/Synonym matching over skills, headlines, and reasoning strings
     if (filters.search.trim() !== "") {
       const query = filters.search.toLowerCase();
       const hasSkillMatch = cand.skills.some((sk) => sk.toLowerCase().includes(query));
@@ -40,7 +98,7 @@ export const Demo: React.FC = () => {
   return (
     <div className="flex flex-col w-full pb-12">
       {/* FEATURE 2: Live Funnel Counter */}
-      <LiveFunnelCounter />
+      <LiveFunnelCounter stats={stats} />
 
       {/* FEATURE 3: Pipeline Visualization */}
       <PipelineVisualizer />
@@ -48,12 +106,15 @@ export const Demo: React.FC = () => {
       {/* FEATURE 5: Search & Filter Bar */}
       <SearchFilterBar onFilterChange={handleFilterChange} />
 
-      {/* FEATURE 1: Candidate Cards */}
+      {/* FEATURE 1: Candidate Cards list */}
       <div className="w-full mt-4">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xs font-bold text-white uppercase tracking-wider">
-            Evaluated Candidate Shortlist ({filteredCandidates.length})
-          </h3>
+          <div className="flex items-center gap-3">
+            <h3 className="text-xs font-bold text-white uppercase tracking-wider">
+              Evaluated Candidate Shortlist ({filteredCandidates.length})
+            </h3>
+            <ApiStatus isLive={isLive} />
+          </div>
           <span className="text-[9px] bg-brand-teal/10 border border-brand-teal/20 text-brand-teal px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
             Offline verified ranks
           </span>
