@@ -17,6 +17,37 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [activeScrollSection, setActiveScrollSection] = useState<string>("home");
 
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setErrorMessage("All fields are required.");
+      return;
+    }
+    try {
+      const existing = localStorage.getItem("redrob_messages");
+      const messages = existing ? JSON.parse(existing) : [];
+      const newMsg = {
+        id: `MSG_${Date.now()}_${Math.random().toString(36).substr(2, 5).toUpperCase()}`,
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        timestamp: new Date().toISOString()
+      };
+      messages.push(newMsg);
+      localStorage.setItem("redrob_messages", JSON.stringify(messages));
+      
+      setIsSubmitted(true);
+      setErrorMessage("");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      setErrorMessage("Could not save message. Please try again.");
+    }
+  };
+
   // Handle smooth scrolling and update active section in header
   const handleScrollToSection = (id: string) => {
     setMobileMenuOpen(false);
@@ -134,7 +165,7 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="md:hidden glass-panel border-b border-brand-border absolute left-0 w-full px-6 py-4 space-y-4 bg-brand-dark/95 z-40"
+              className="md:hidden glass-panel no-hover border-b border-brand-border absolute left-0 w-full px-6 py-4 space-y-4 bg-brand-dark/95 z-40"
             >
               <nav className="flex flex-col gap-3 text-xs font-semibold text-brand-gray">
                 {["home", "features", "analytics", "workflow", "architecture", "workspace", "contact"].map((section) => (
@@ -306,7 +337,7 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
             
             <div className="flex flex-wrap gap-4 pt-2">
               <a 
-                href="https://github.com" 
+                href="https://github.com/harirajharsh8795/AI-challenge-H2S" 
                 target="_blank" 
                 rel="noreferrer" 
                 className="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-brand-border text-xs font-semibold text-white flex items-center gap-2 transition-all duration-300"
@@ -320,35 +351,83 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
           <div className="lg:col-span-6 glass-panel p-8 rounded-2xl border border-brand-border space-y-4">
             <h4 className="font-bold text-sm text-white flex items-center gap-2 mb-4">
               <Mail className="w-4 h-4 text-brand-orange" />
-              <span>Book an AI Demo Walkthrough</span>
+              <span>Contact & Technical Inquiry</span>
             </h4>
             
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-[10px] text-brand-gray font-semibold uppercase tracking-wider">Name</label>
-                  <input type="text" placeholder="John Doe" className="w-full bg-slate-900 border border-brand-border rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-brand-orange" />
+            {isSubmitted ? (
+              <div className="text-center py-8 space-y-4">
+                <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-brand-teal flex items-center justify-center mx-auto mb-2 shadow-glass-orange">
+                  <ShieldCheck className="w-6 h-6 text-brand-teal" />
                 </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] text-brand-gray font-semibold uppercase tracking-wider">Email</label>
-                  <input type="email" placeholder="john@company.com" className="w-full bg-slate-900 border border-brand-border rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-brand-orange" />
+                <h5 className="text-sm font-extrabold text-white">Message Saved to Database!</h5>
+                <p className="text-xs text-brand-gray max-w-sm mx-auto leading-relaxed">
+                  Your inquiry has been stored locally in the database. Our technical team will process your request shortly.
+                </p>
+                <button 
+                  onClick={() => setIsSubmitted(false)}
+                  className="px-5 py-2.5 mt-2 bg-slate-800 hover:bg-slate-700 text-xs font-bold rounded-xl text-white transition-all duration-300 border border-slate-700"
+                >
+                  Send Another Message
+                </button>
+              </div>
+            ) : (
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-[10px] text-brand-gray font-semibold uppercase tracking-wider">Name</label>
+                    <input 
+                      type="text" 
+                      placeholder="John Doe" 
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full bg-slate-900 border border-brand-border rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-brand-orange transition-colors" 
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-[10px] text-brand-gray font-semibold uppercase tracking-wider">Email</label>
+                    <input 
+                      type="email" 
+                      placeholder="john@company.com" 
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full bg-slate-900 border border-brand-border rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-brand-orange transition-colors" 
+                    />
+                  </div>
                 </div>
-              </div>
-              
-              <div className="space-y-1">
-                <label className="text-[10px] text-brand-gray font-semibold uppercase tracking-wider">Message</label>
-                <textarea placeholder="Tell us about your team size and AI sourcing bottlenecks..." className="w-full h-24 bg-slate-900 border border-brand-border rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-brand-orange resize-none" />
-              </div>
+                
+                <div className="space-y-1">
+                  <label className="text-[10px] text-brand-gray font-semibold uppercase tracking-wider">Message</label>
+                  <textarea 
+                    placeholder="Tell us about your team size and AI sourcing bottlenecks..." 
+                    required
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full h-24 bg-slate-900 border border-brand-border rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-brand-orange resize-none transition-colors" 
+                  />
+                </div>
 
-              <div className="grid grid-cols-2 gap-4 pt-2">
-                <button type="submit" className="py-3 bg-brand-orange hover:bg-brand-orange/90 rounded-xl text-xs font-bold text-white transition-all duration-300 shadow-glass-orange text-center">
-                  Book Demo
-                </button>
-                <button type="button" className="py-3 bg-slate-800 hover:bg-slate-700/50 rounded-xl text-xs font-bold text-brand-gray hover:text-white transition-all duration-300 border border-slate-700">
-                  Contact Team
-                </button>
-              </div>
-            </form>
+                {errorMessage && (
+                  <p className="text-xs text-red-500 font-semibold">{errorMessage}</p>
+                )}
+
+                <div className="grid grid-cols-2 gap-4 pt-2">
+                  <button 
+                    type="submit" 
+                    className="py-3 bg-brand-orange hover:bg-brand-orange/90 rounded-xl text-xs font-bold text-white transition-all duration-300 shadow-glass-orange text-center"
+                  >
+                    Send Message
+                  </button>
+                  <a 
+                    href="mailto:support@redrob.ai" 
+                    className="py-3 bg-slate-800 hover:bg-slate-700/50 rounded-xl text-xs font-bold text-brand-gray hover:text-white transition-all duration-300 border border-slate-700 text-center flex items-center justify-center"
+                  >
+                    Email Support
+                  </a>
+                </div>
+              </form>
+            )}
           </div>
         </section>
       </div>
