@@ -38,10 +38,132 @@ BASE_RELATIONS: List[Tuple[str, str]] = [
     ("elasticsearch", "vector database"),
     ("map", "ranking metrics"),
     ("mean average precision", "ranking metrics"),
-]
 
-# Global cache for the skill graph instance to avoid rebuilding
-_GLOBAL_GRAPH: Optional[Dict[str, Set[str]]] = None
+    # Added in expansion v2
+    # DOMAIN 1 — LLM Models & Providers
+    ("gpt", "openai"),
+    ("gpt", "gpt-4"),
+    ("gpt", "chatgpt"),
+    ("gpt", "gpt-3.5"),
+    ("claude", "anthropic"),
+    ("claude", "claude-3"),
+    ("claude", "claude-sonnet"),
+    ("gemini", "google ai"),
+    ("gemini", "bard"),
+    ("gemini", "palm"),
+    ("gemini", "gemini-pro"),
+    ("llama", "meta ai"),
+    ("llama", "llama-2"),
+    ("llama", "llama-3"),
+    ("llama", "codellama"),
+    ("mistral", "mixtral"),
+    ("mistral", "mistral-7b"),
+    ("mistral", "mistral-large"),
+    ("phi", "microsoft phi"),
+    ("phi", "phi-2"),
+    ("phi", "phi-3"),
+    ("phi", "small language model"),
+
+    # DOMAIN 2 — Vector Databases
+    ("qdrant", "qdrant cloud"),
+    ("qdrant", "vector search"),
+    ("qdrant", "approximate nearest neighbor"),
+    ("pinecone", "pinecone index"),
+    ("pinecone", "serverless vector db"),
+    ("weaviate", "weaviate cloud"),
+    ("weaviate", "graphql vector search"),
+    ("chroma", "chromadb"),
+    ("chroma", "local vector store"),
+    ("milvus", "milvus lite"),
+    ("milvus", "zilliz"),
+    ("faiss", "facebook ai similarity search"),
+    ("faiss", "ivf index"),
+    ("faiss", "hnsw"),
+    ("pgvector", "postgres vector"),
+    ("pgvector", "supabase vector"),
+
+    # DOMAIN 3 — Fine-tuning Techniques
+    ("lora", "low rank adaptation"),
+    ("lora", "lora rank"),
+    ("lora", "lora alpha"),
+    ("qlora", "quantized lora"),
+    ("qlora", "4-bit lora"),
+    ("qlora", "nf4"),
+    ("peft", "parameter efficient fine tuning"),
+    ("peft", "adapter tuning"),
+    ("rlhf", "reinforcement learning from human feedback"),
+    ("rlhf", "reward model"),
+    ("dpo", "direct preference optimization"),
+    ("dpo", "preference learning"),
+    ("sft", "supervised fine tuning"),
+    ("sft", "instruction tuning"),
+    ("sft", "chat tuning"),
+    ("unsloth", "fast lora training"),
+    ("unsloth", "memory efficient training"),
+
+    # DOMAIN 4 — MLOps & Experiment Tracking
+    ("mlflow", "ml experiment tracking"),
+    ("mlflow", "mlflow registry"),
+    ("wandb", "weights and biases"),
+    ("wandb", "experiment tracking"),
+    ("wandb", "w&b"),
+    ("kubeflow", "ml pipeline orchestration"),
+    ("kubeflow", "kfp"),
+    ("vertex ai", "google vertex"),
+    ("vertex ai", "vertex pipelines"),
+    ("vertex ai", "vertex training"),
+    ("sagemaker", "aws sagemaker"),
+    ("sagemaker", "sagemaker training"),
+    ("sagemaker", "sagemaker endpoints"),
+    ("bentoml", "model serving"),
+    ("bentoml", "bento service"),
+    ("triton", "triton inference server"),
+    ("triton", "nvidia triton"),
+    ("triton", "tensorrt"),
+
+    # DOMAIN 5 — Data Engineering
+    ("spark", "apache spark"),
+    ("spark", "pyspark"),
+    ("spark", "spark sql"),
+    ("spark", "databricks"),
+    ("kafka", "apache kafka"),
+    ("kafka", "kafka streams"),
+    ("kafka", "confluent"),
+    ("airflow", "apache airflow"),
+    ("airflow", "dag"),
+    ("airflow", "workflow orchestration"),
+    ("dbt", "data build tool"),
+    ("dbt", "dbt cloud"),
+    ("dbt", "sql transformation"),
+    ("flink", "apache flink"),
+    ("flink", "stream processing"),
+    ("ray", "ray tune"),
+    ("ray", "ray train"),
+    ("ray", "distributed ml"),
+
+    # DOMAIN 6 — Retrieval & Search
+    ("rag", "retrieval augmented generation"),
+    ("rag", "retrieval pipeline"),
+    ("bm25", "okapi bm25"),
+    ("bm25", "sparse retrieval"),
+    ("bm25", "term frequency"),
+    ("embeddings", "dense vectors"),
+    ("embeddings", "sentence embeddings"),
+    ("embeddings", "text embeddings"),
+    ("reranking", "cross encoder reranking"),
+    ("reranking", "two stage retrieval"),
+    ("semantic search", "dense retrieval"),
+    ("semantic search", "neural search"),
+    ("hybrid search", "sparse dense fusion"),
+    ("hybrid search", "rrf"),
+    ("hybrid search", "reciprocal rank fusion"),
+    ("langchain", "lcel"),
+    ("langchain", "langchain tools"),
+    ("langchain", "langchain agents"),
+    ("llamaindex", "llama index"),
+    ("llamaindex", "gpt index"),
+    ("llamaindex", "node parser"),
+]
 
 
 def build_skill_graph() -> Dict[str, Set[str]]:
@@ -74,16 +196,17 @@ def build_skill_graph() -> Dict[str, Set[str]]:
     return graph
 
 
+# Build and export global graph instance
+SKILL_GRAPH: Dict[str, Set[str]] = build_skill_graph()
+
+
 def get_global_graph() -> Dict[str, Set[str]]:
-    """Retrieves or initializes the global singleton skill graph.
+    """Retrieves the global singleton skill graph.
 
     Returns:
         Dict[str, Set[str]]: The global skill graph instance.
     """
-    global _GLOBAL_GRAPH
-    if _GLOBAL_GRAPH is None:
-        _GLOBAL_GRAPH = build_skill_graph()
-    return _GLOBAL_GRAPH
+    return SKILL_GRAPH
 
 
 def expand_skill(skill: str, max_depth: Optional[int] = None) -> Set[str]:
