@@ -1,0 +1,42 @@
+# ============================================================
+# Redrob Copilot — Pinned Requirements (Pipeline/Local version)
+# Platform: GCP e2-standard-4, CPU-only, Ubuntu 22.04, Python 3.10
+# Install order: torch first (custom index), then this file
+#
+# Step 1: pip install torch==2.2.2+cpu torchvision==0.17.2+cpu \
+#           --index-url https://download.pytorch.org/whl/cpu
+# Step 2: pip install -r requirements_pipeline.txt
+# ============================================================
+
+# Core — numpy MUST be < 2.0 (sentence-transformers int32 bug)
+numpy==1.26.4
+scipy==1.13.0
+
+# PyTorch CPU (installed separately via pytorch whl index)
+torch==2.2.2+cpu
+
+# NLP / Retrieval
+transformers==4.40.2
+tokenizers==0.19.1
+sentence-transformers==2.7.0
+huggingface-hub==0.23.2
+rank_bm25==0.2.2
+
+# Google Antigravity SDK + Gemini
+google-generativeai==0.5.4
+google-cloud-aiplatform==1.52.0
+google-auth==2.29.0
+google-api-core==2.19.0
+protobuf==4.25.3
+
+# Config / Data
+pydantic==2.7.1
+pyyaml==6.0.1
+pandas==2.2.2
+tqdm==4.66.4
+requests==2.32.2
+filelock==3.14.0
+packaging==24.0
+
+fastapi==0.111.0
+uvicorn==0.30.1

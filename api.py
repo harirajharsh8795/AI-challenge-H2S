@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-import pandas as pd
+import csv
 import json
 import os
 
@@ -24,8 +24,18 @@ def root():
 @app.get("/api/candidates")
 def get_candidates():
     """Returns top 100 ranked candidates as JSON"""
-    df = pd.read_csv(SUBMISSION_CSV)
-    return df.to_dict(orient="records")
+    candidates = []
+    if os.path.exists(SUBMISSION_CSV):
+        with open(SUBMISSION_CSV, mode="r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                candidates.append({
+                    "candidate_id": row["candidate_id"],
+                    "rank": int(row["rank"]),
+                    "score": float(row["score"]),
+                    "reasoning": row["reasoning"]
+                })
+    return candidates
 
 @app.get("/api/stats")
 def get_stats():
@@ -57,8 +67,16 @@ def get_stats():
 @app.get("/api/candidates/{candidate_id}")
 def get_candidate_detail(candidate_id: str):
     """Returns full details for a specific candidate"""
-    df = pd.read_csv(SUBMISSION_CSV)
-    row = df[df["candidate_id"] == candidate_id]
-    if row.empty:
-        return {"error": "Candidate not found"}
-    return row.to_dict(orient="records")[0]
+    if os.path.exists(SUBMISSION_CSV):
+        with open(SUBMISSION_CSV, mode="r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row["candidate_id"] == candidate_id:
+                    return {
+                        "candidate_id": row["candidate_id"],
+                        "rank": int(row["rank"]),
+                        "score": float(row["score"]),
+                        "reasoning": row["reasoning"]
+                    }
+    return {"error": "Candidate not found"}
+
