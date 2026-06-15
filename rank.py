@@ -120,6 +120,17 @@ def run_pipeline(
     if min_exp is None: min_exp = 3.0
     if max_exp is None: max_exp = 12.0
 
+    # Pre-compute JD skill expansions once to prime the BFS cache
+    logger.info("Pre-expanding and caching JD skills semantic neighborhoods...")
+    from src.skill_graph import expand_skill_cached, get_global_graph
+    graph = get_global_graph()
+    must_have_skills = jd_spec.get("must_have", [])
+    preferred_skills = jd_spec.get("preferred", [])
+    for skill in must_have_skills:
+        expand_skill_cached(skill, graph, max_hops=2)
+    for skill in preferred_skills:
+        expand_skill_cached(skill, graph, max_hops=2)
+
     # 2. Ingest Candidates and Apply Stage 1 Hard Filters
     logger.info("Ingesting candidate streams and parsing hard filters...")
     

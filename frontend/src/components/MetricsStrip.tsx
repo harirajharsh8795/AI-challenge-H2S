@@ -9,7 +9,7 @@ export const MetricsStrip: React.FC = () => (
     <span className="text-slate-600 hidden sm:inline">|</span>
     <span className="text-green-400">P@10 = <span className="text-white">100%</span></span>
     <span className="text-slate-600 hidden sm:inline">|</span>
-    <span className="text-sky-400">Runtime = <span className="text-white">193.94s</span></span>
+    <span className="text-sky-400">Runtime = <span className="text-white">167.45s</span></span>
     <span className="text-slate-600 hidden sm:inline">|</span>
     <span className="text-indigo-400">RAM = <span className="text-white font-mono">&lt; 150MB</span></span>
     <span className="text-slate-600 hidden sm:inline">|</span>

@@ -13,7 +13,7 @@ export const LiveFunnelCounter: React.FC<LiveFunnelCounterProps> = ({ stats }) =
 
   // Targets from stats prop
   const targetProfiles = stats?.total_ingested ?? 100000;
-  const targetSeconds = stats?.runtime_seconds ?? 193.94;
+  const targetSeconds = stats?.runtime_seconds ?? 167.45;
   const targetShortlist = stats?.final_shortlist ?? 100;
   const targetRam = stats?.peak_memory_mb ?? 128;
 

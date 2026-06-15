@@ -272,6 +272,52 @@ def expand_skill_set(skills: Iterable[str], max_depth: Optional[int] = None) -> 
     return expanded
 
 
+_BFS_CACHE: Dict[Tuple[str, Optional[int]], Dict[str, int]] = {}
+
+def expand_skill_cached(skill: str, graph: Dict[str, Set[str]], max_hops: Optional[int] = 2) -> Dict[str, int]:
+    """Expands a single skill using BFS and returns distances to all reachable nodes within max_hops.
+    Caches the results for fast O(1) distance lookups.
+    """
+    global _BFS_CACHE
+    if len(_BFS_CACHE) > 500:
+        logger.info("BFS cache size exceeded 500. Clearing cache to prevent memory bloat.")
+        _BFS_CACHE.clear()
+
+    cache_key = (skill, max_hops)
+    if cache_key in _BFS_CACHE:
+        return _BFS_CACHE[cache_key]
+
+    norm_skill = skill.strip().lower()
+    if not norm_skill:
+        return {}
+
+    if norm_skill not in graph:
+        return {norm_skill: 0}
+
+    distances = {norm_skill: 0}
+    queue = [(norm_skill, 0)]
+    head = 0
+    while head < len(queue):
+        curr, dist = queue[head]
+        head += 1
+
+        if max_hops is not None and dist >= max_hops:
+            continue
+
+        for neighbor in graph.get(curr, set()):
+            if neighbor not in distances:
+                distances[neighbor] = dist + 1
+                queue.append((neighbor, dist + 1))
+
+    _BFS_CACHE[cache_key] = distances
+    return distances
+
+
+def clear_bfs_cache() -> None:
+    """Clears the global BFS cache."""
+    _BFS_CACHE.clear()
+
+
 def find_shortest_path_distance(
     start_node: str,
     target_nodes: Set[str],
@@ -279,7 +325,7 @@ def find_shortest_path_distance(
 ) -> Tuple[Optional[str], int]:
     """Finds the shortest path distance in the graph from start_node to any node in target_nodes.
 
-    Uses Breadth-First Search (BFS) to find the nearest target node and the number of hops.
+    Uses cached BFS distances to optimize performance.
 
     Args:
         start_node (str): The starting node in the graph.
@@ -291,26 +337,21 @@ def find_shortest_path_distance(
             - The nearest target node found (or None if unreachable).
             - The shortest distance as an integer hops count (or -1 if unreachable).
     """
-    if start_node in target_nodes:
-        return start_node, 0
+    distances = expand_skill_cached(start_node, graph, max_hops=2)
 
-    if start_node not in graph:
-        return None, -1
+    min_dist = float('inf')
+    best_node = None
 
-    visited: Set[str] = {start_node}
-    queue: List[Tuple[str, int]] = [(start_node, 0)]
+    for target in target_nodes:
+        t_norm = target.strip().lower()
+        if t_norm in distances:
+            dist = distances[t_norm]
+            if dist < min_dist:
+                min_dist = dist
+                best_node = target
 
-    head = 0
-    while head < len(queue):
-        curr, dist = queue[head]
-        head += 1
-
-        for neighbor in graph.get(curr, set()):
-            if neighbor not in visited:
-                if neighbor in target_nodes:
-                    return neighbor, dist + 1
-                visited.add(neighbor)
-                queue.append((neighbor, dist + 1))
+    if best_node is not None:
+        return best_node, min_dist
 
     return None, -1
 
