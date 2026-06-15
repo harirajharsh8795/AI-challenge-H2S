@@ -60,10 +60,10 @@ export const Dashboard: React.FC = () => {
   ];
 
   const statCards = [
-    { label: "Mean Reciprocal Rank (MRR)", value: metrics.mrr.toFixed(4), icon: TrendingUp, color: "text-brand-orange" },
+    { label: "Mean Reciprocal Rank (MRR)", value: metrics.mrr.toFixed(4), icon: TrendingUp, color: "text-brand-indigo" },
     { label: "NDCG@10 / NDCG@100", value: metrics.ndcg_100.toFixed(4), icon: Sparkles, color: "text-brand-purple" },
     { label: "Peak RAM Usage", value: "128.4 MB", icon: HardDrive, color: "text-brand-teal" },
-    { label: "Total Runtime", value: `${pipelineStats.runtime_seconds}s`, icon: Cpu, color: "text-amber-500" },
+    { label: "Total Runtime", value: `${pipelineStats.runtime_seconds}s`, icon: Cpu, color: "text-sky-400" },
   ];
 
   return (
@@ -118,7 +118,7 @@ export const Dashboard: React.FC = () => {
                 <Line
                   type="monotone"
                   dataKey="Redrob Score"
-                  stroke="#FF6B00"
+                  stroke="#8B5CF6"
                   strokeWidth={2}
                   dot={{ r: 2 }}
                   activeDot={{ r: 4 }}
@@ -149,8 +149,8 @@ export const Dashboard: React.FC = () => {
               <AreaChart data={perfData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorCpu" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#FF6B00" stopOpacity={0.2} />
-                    <stop offset="95%" stopColor="#FF6B00" stopOpacity={0} />
+                    <stop offset="5%" stopColor="#6366F1" stopOpacity={0.2} />
+                    <stop offset="95%" stopColor="#6366F1" stopOpacity={0} />
                   </linearGradient>
                   <linearGradient id="colorRam" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#14B8A6" stopOpacity={0.2} />
@@ -169,7 +169,7 @@ export const Dashboard: React.FC = () => {
                 <Area
                   type="monotone"
                   dataKey="CPU"
-                  stroke="#FF6B00"
+                  stroke="#6366F1"
                   fillOpacity={1}
                   fill="url(#colorCpu)"
                   strokeWidth={2}
@@ -209,7 +209,7 @@ export const Dashboard: React.FC = () => {
               <Bar dataKey="count" fill="#6366F1" radius={[4, 4, 0, 0]}>
                 {funnelData.map((entry, index) => {
                   // highlight shortlist
-                  const color = index === funnelData.length - 1 ? "#FF6B00" : "#6366F1";
+                  const color = index === funnelData.length - 1 ? "#8B5CF6" : "#6366F1";
                   return <Bar key={`cell-${index}`} fill={color} />;
                 })}
               </Bar>

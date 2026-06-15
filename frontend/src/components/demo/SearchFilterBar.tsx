@@ -59,7 +59,7 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({ onFilterChange
         <div className="flex-1 space-y-0.5">
           <div className="flex justify-between text-[10px] text-brand-gray">
             <span>Minimum Fused Score</span>
-            <span className="font-extrabold text-brand-orange">{minScore.toFixed(3)}</span>
+            <span className="font-extrabold text-brand-indigo">{minScore.toFixed(3)}</span>
           </div>
           <input 
             type="range" 
@@ -68,7 +68,7 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({ onFilterChange
             step="0.005"
             value={minScore}
             onChange={(e) => handleScoreChange(parseFloat(e.target.value))}
-            className="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-orange focus:outline-none"
+            className="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500 focus:outline-none"
           />
         </div>
       </div>

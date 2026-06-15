@@ -28,9 +28,9 @@ export const CandidateCard: React.FC<CandidateCardProps> = ({ candidate, onClick
   };
 
   const getNoticeBadgeColors = (days: number) => {
-    if (days === 0) return "bg-brand-teal/10 border-brand-teal/20 text-brand-teal";
-    if (days <= 30) return "bg-amber-500/10 border-amber-500/20 text-amber-400";
-    return "bg-rose-500/10 border-rose-500/20 text-rose-400";
+    if (days === 0) return "bg-green-500/10 border-green-500/20 text-green-400";
+    if (days <= 30) return "bg-sky-500/10 border-sky-500/20 text-sky-400";
+    return "bg-amber-500/10 border-amber-500/20 text-amber-400"; // 90 days warning
   };
 
   return (
@@ -39,16 +39,18 @@ export const CandidateCard: React.FC<CandidateCardProps> = ({ candidate, onClick
       className="glass-panel p-5 rounded-2xl border border-brand-border/60 bg-slate-900/40 hover:bg-slate-800/30 cursor-pointer transition-all duration-300 flex flex-col justify-between select-none relative group overflow-hidden"
     >
       {/* Glow background on hover */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-brand-purple/5 to-brand-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-brand-purple/5 to-brand-indigo/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       {/* Header Info */}
       <div className="flex items-start justify-between gap-4 relative z-10">
         <div className="flex items-center gap-3">
           {/* Rank Badge */}
           <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-black text-xs border ${
-            candidate.rank <= 3 
-              ? "bg-brand-orange/15 border-brand-orange/30 text-white text-sm" 
-              : "bg-slate-850 border-slate-700 text-brand-gray"
+            candidate.rank === 1
+              ? "bg-amber-500/15 border-amber-500/30 text-amber-400 text-sm"
+              : candidate.rank <= 3 
+                ? "bg-brand-indigo/15 border-brand-indigo/30 text-white text-sm" 
+                : "bg-slate-850 border-brand-indigo/20 text-brand-gray"
           }`}>
             {getRankLabel(candidate.rank)}
           </div>
@@ -78,11 +80,11 @@ export const CandidateCard: React.FC<CandidateCardProps> = ({ candidate, onClick
       <div className="space-y-1 relative z-10">
         <div className="flex justify-between text-[10px] font-bold">
           <span className="text-brand-gray">Evaluation Score</span>
-          <span className="text-brand-orange font-mono">{candidate.score.toFixed(6)}</span>
+          <span className="text-indigo-400 font-mono">{candidate.score.toFixed(6)}</span>
         </div>
         <div className="w-full h-1.5 bg-slate-850 rounded-full overflow-hidden">
           <div 
-            className="h-full bg-gradient-to-r from-brand-orange to-brand-teal rounded-full transition-all duration-1000 ease-out"
+            className="h-full bg-gradient-to-r from-indigo-500 to-teal-400 rounded-full transition-all duration-1000 ease-out"
             style={{ width: `${fillPercent}%` }}
           />
         </div>

@@ -12,7 +12,7 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({ candidate, onClose }) =>
   const chartData = [
     { name: "Semantic Overlap", score: candidate.semantic_score, color: "#6366f1" },
     { name: "Skill Synonym Fit", score: candidate.skill_score, color: "#22c55e" },
-    { name: "Behavioral Signal", score: candidate.behavioral_score, color: "#ff6b00" }
+    { name: "Behavioral Signal", score: candidate.behavioral_score, color: "#38bdf8" }
   ];
 
   return (
@@ -29,13 +29,13 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({ candidate, onClose }) =>
 
         {/* Modal Header */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-orange to-brand-purple flex items-center justify-center font-bold text-white shadow-glass-orange">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-indigo to-brand-purple flex items-center justify-center font-bold text-white shadow-glass-indigo">
             {candidate.rank <= 3 ? "🏆" : "#"}
           </div>
           <div>
             <h3 className="font-extrabold text-sm text-white tracking-tight flex items-center gap-2">
               <span>{candidate.candidate_id}</span>
-              <span className="text-[10px] bg-brand-orange/10 border border-brand-orange/20 text-brand-orange px-2 py-0.5 rounded font-bold uppercase tracking-wider">
+              <span className="text-[10px] bg-brand-indigo/10 border border-brand-indigo/20 text-brand-indigo px-2 py-0.5 rounded font-bold uppercase tracking-wider">
                 Rank #{candidate.rank}
               </span>
             </h3>
@@ -47,7 +47,7 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({ candidate, onClose }) =>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Column 1: Recharts Chart & Highlighted Skills */}
           <div className="space-y-4">
-            <h4 className="text-[10px] font-bold text-brand-orange uppercase tracking-wider">Fused Score Breakdown</h4>
+            <h4 className="text-[10px] font-bold text-brand-indigo uppercase tracking-wider">Fused Score Breakdown</h4>
             
             {/* Recharts BarChart */}
             <div className="h-44 w-full bg-slate-950/60 border border-brand-border rounded-xl p-2">
@@ -89,7 +89,7 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({ candidate, onClose }) =>
           {/* Column 2: Selection Reasoning & Dossier Overview */}
           <div className="space-y-4 flex flex-col justify-between">
             <div className="space-y-4">
-              <h4 className="text-[10px] font-bold text-brand-orange uppercase tracking-wider">AI Selection Insights</h4>
+              <h4 className="text-[10px] font-bold text-brand-indigo uppercase tracking-wider">AI Selection Insights</h4>
               
               {/* Detailed Reasoning block */}
               <div className="p-4 rounded-xl bg-brand-purple/5 border border-brand-purple/10 relative">
@@ -111,7 +111,7 @@ export const ScoreModal: React.FC<ScoreModalProps> = ({ candidate, onClose }) =>
               </div>
               <div>
                 <span className="text-[9px] text-brand-gray block uppercase font-bold tracking-wider">Response Rate</span>
-                <span className="text-xs font-black text-brand-teal mt-1 block font-mono">{candidate.response_rate}%</span>
+                <span className="text-xs font-black text-sky-400 mt-1 block font-mono">{candidate.response_rate}%</span>
               </div>
             </div>
           </div>

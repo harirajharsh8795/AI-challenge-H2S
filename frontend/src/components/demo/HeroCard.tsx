@@ -46,15 +46,15 @@ export const HeroCard: React.FC<HeroCardProps> = ({ candidate, onClick }) => {
           </div>
 
           <div className="grid grid-cols-3 gap-3 mb-4">
-            <div className="bg-slate-900/60 rounded-xl p-3 text-center border border-slate-700/40">
+            <div className="bg-slate-900/60 rounded-xl p-3 text-center border border-indigo-500/50">
               <span className="text-[9px] text-slate-500 uppercase font-bold block">Experience</span>
               <span className="text-sm font-black text-white">{candidate.experience}y</span>
             </div>
-            <div className="bg-slate-900/60 rounded-xl p-3 text-center border border-slate-700/40">
+            <div className="bg-slate-900/60 rounded-xl p-3 text-center border border-indigo-500/50">
               <span className="text-[9px] text-slate-500 uppercase font-bold block">Notice</span>
               <span className="text-sm font-black text-green-400">{candidate.notice_period}d</span>
             </div>
-            <div className="bg-slate-900/60 rounded-xl p-3 text-center border border-slate-700/40">
+            <div className="bg-slate-900/60 rounded-xl p-3 text-center border border-indigo-500/50">
               <span className="text-[9px] text-slate-500 uppercase font-bold block">Response</span>
               <span className="text-sm font-black text-blue-400">{candidate.response_rate}%</span>
             </div>

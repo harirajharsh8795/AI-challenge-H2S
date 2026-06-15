@@ -18,14 +18,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => 
     <aside className="w-64 glass-panel border-r border-brand-border h-screen flex flex-col fixed left-0 top-0 z-30">
       {/* Brand Header */}
       <div className="p-6 border-b border-brand-border flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-orange to-brand-purple flex items-center justify-center font-bold text-white shadow-glass-orange">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-indigo to-brand-purple flex items-center justify-center font-bold text-white shadow-glass-indigo">
           R
         </div>
         <div>
           <h1 className="font-bold text-sm tracking-tight bg-gradient-to-r from-white to-brand-gray bg-clip-text text-transparent">
             Redrob Copilot
           </h1>
-          <span className="text-[10px] text-brand-orange font-semibold tracking-wider uppercase">
+          <span className="text-[10px] text-brand-indigo font-semibold tracking-wider uppercase">
             Candidate Discovery
           </span>
         </div>
@@ -42,13 +42,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => 
               onClick={() => setActiveTab(item.id)}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 font-medium text-xs group ${
                 isActive
-                  ? "bg-brand-orange text-white shadow-glass-orange font-semibold"
+                  ? "bg-brand-indigo text-white shadow-glass-indigo font-semibold"
                   : "text-brand-gray hover:text-white hover:bg-slate-800/50"
               }`}
             >
               <Icon
                 className={`w-4 h-4 transition-transform duration-300 group-hover:scale-110 ${
-                  isActive ? "text-white" : "text-brand-gray group-hover:text-brand-orange"
+                  isActive ? "text-white" : "text-brand-gray group-hover:text-brand-indigo"
                 }`}
               />
               <span>{item.label}</span>

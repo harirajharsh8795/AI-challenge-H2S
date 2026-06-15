@@ -81,7 +81,7 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
   }, []);
 
   const featureItems = [
-    { label: "Hybrid Candidate Retrieval", desc: "Combines Okapi BM25 lexical token search with dense bi-encoder semantic similarity scoring.", icon: Search, color: "text-brand-orange bg-brand-orange/5 border-brand-orange/10" },
+    { label: "Hybrid Candidate Retrieval", desc: "Combines Okapi BM25 lexical token search with dense bi-encoder semantic similarity scoring.", icon: Search, color: "text-brand-indigo bg-brand-indigo/5 border-brand-indigo/10" },
     { label: "Cross-Encoder Reranking", desc: "Performs query-candidate cross-attention scoring to capture deep contextual relevances.", icon: Cpu, color: "text-brand-purple bg-brand-purple/5 border-brand-purple/10" },
     { label: "BFS Skill Synonym Graph", desc: "Maps candidate skill synonyms programmatically using graph hops with distance-decay modifiers.", icon: Network, color: "text-brand-teal bg-brand-teal/5 border-brand-teal/10" },
     { label: "Behavioral Signal Fusion", desc: "Integrates notice period availability, relocate closeness, and login recency into candidate scoring.", icon: Compass, color: "text-amber-500 bg-amber-500/5 border-amber-500/10" },
@@ -104,14 +104,14 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-orange to-brand-purple flex items-center justify-center font-bold text-white shadow-glass-orange">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-indigo to-brand-purple flex items-center justify-center font-bold text-white shadow-glass-indigo">
               R
             </div>
             <div>
               <h1 className="font-bold text-sm tracking-tight bg-gradient-to-r from-white to-brand-gray bg-clip-text text-transparent">
                 Redrob Copilot
               </h1>
-              <span className="text-[9px] text-brand-orange font-semibold tracking-wider uppercase block -mt-0.5">
+              <span className="text-[9px] text-brand-indigo font-semibold tracking-wider uppercase block -mt-0.5">
                 AI Talent Intelligence
               </span>
             </div>
@@ -131,7 +131,7 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
                 }}
                 className={`capitalize transition-colors duration-300 ${
                   section === "workspace"
-                    ? "text-brand-orange hover:text-brand-orange/80"
+                    ? "text-brand-indigo hover:text-brand-indigo/80"
                     : activeScrollSection === section
                     ? "text-white font-bold"
                     : "hover:text-white"
@@ -146,7 +146,7 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
           <div className="hidden md:flex items-center gap-3">
             <button
               onClick={() => setActiveTab("workspace")}
-              className="px-4 py-2 text-xs font-bold bg-brand-orange hover:bg-brand-orange/90 rounded-xl transition-all duration-300 shadow-glass-orange"
+              className="px-4 py-2 text-xs font-bold bg-brand-indigo hover:bg-brand-indigo/90 rounded-xl transition-all duration-300 shadow-glass-indigo"
             >
               Launch Workspace
             </button>
@@ -180,7 +180,7 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
                     }}
                     className={`capitalize text-left transition-colors duration-300 ${
                       section === "workspace"
-                        ? "text-brand-orange font-bold hover:text-brand-orange/80"
+                        ? "text-brand-indigo font-bold hover:text-brand-indigo/80"
                         : "hover:text-white"
                     }`}
                   >
@@ -190,7 +190,7 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
               </nav>
               <button
                 onClick={() => setActiveTab("workspace")}
-                className="w-full py-2.5 text-xs font-bold bg-brand-orange hover:bg-brand-orange/90 rounded-xl transition-all duration-300 text-center shadow-glass-orange block"
+                className="w-full py-2.5 text-xs font-bold bg-brand-indigo hover:bg-brand-indigo/90 rounded-xl transition-all duration-300 text-center shadow-glass-indigo block"
               >
                 Launch Workspace
               </button>
@@ -204,14 +204,14 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
         {/* 1. HERO SECTION */}
         <section id="home" className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[calc(100vh-160px)]">
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-brand-orange text-[10px] font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-brand-indigo text-[10px] font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5" />
               <span>SaaS Candidate Discovery Engine</span>
             </div>
 
             <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight leading-none text-white">
               AI-Powered Candidate Discovery:{" "}
-              <span className="bg-gradient-to-r from-brand-orange to-brand-purple bg-clip-text text-transparent block mt-2">
+              <span className="bg-gradient-to-r from-brand-indigo to-brand-purple bg-clip-text text-transparent block mt-2">
                 Rank 100,000 Profiles in Minutes
               </span>
             </h2>
@@ -223,7 +223,7 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
             <div className="flex flex-wrap gap-4 pt-4">
               <button
                 onClick={() => setActiveTab("workspace")}
-                className="px-6 py-3.5 rounded-xl bg-brand-orange hover:bg-brand-orange/90 text-white font-bold text-xs flex items-center gap-2 transition-all duration-300 transform hover:scale-[1.02] shadow-glass-orange"
+                className="px-6 py-3.5 rounded-xl bg-brand-indigo hover:bg-brand-indigo/90 text-white font-bold text-xs flex items-center gap-2 transition-all duration-300 transform hover:scale-[1.02] shadow-glass-indigo"
               >
                 <Play className="w-4 h-4 fill-white" />
                 <span>Launch Recruiter Workspace</span>
@@ -296,15 +296,15 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
             </p>
             <ul className="space-y-3 text-xs text-brand-gray">
               <li className="flex items-center gap-2">
-                <ChevronRight className="w-4 h-4 text-brand-orange" />
+                <ChevronRight className="w-4 h-4 text-brand-indigo" />
                 <span>Excludes synthetic resume honeypot keyword-gamers.</span>
               </li>
               <li className="flex items-center gap-2">
-                <ChevronRight className="w-4 h-4 text-brand-orange" />
+                <ChevronRight className="w-4 h-4 text-brand-indigo" />
                 <span>Reduces pool size from 100,000 to the top 100 shortlist in seconds.</span>
               </li>
               <li className="flex items-center gap-2">
-                <ChevronRight className="w-4 h-4 text-brand-orange" />
+                <ChevronRight className="w-4 h-4 text-brand-indigo" />
                 <span>Integrates notice periods and relocate hubs directly into sorting.</span>
               </li>
             </ul>
@@ -350,13 +350,13 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
 
           <div className="lg:col-span-6 glass-panel p-8 rounded-2xl border border-brand-border space-y-4">
             <h4 className="font-bold text-sm text-white flex items-center gap-2 mb-4">
-              <Mail className="w-4 h-4 text-brand-orange" />
+              <Mail className="w-4 h-4 text-brand-indigo" />
               <span>Contact & Technical Inquiry</span>
             </h4>
             
             {isSubmitted ? (
               <div className="text-center py-8 space-y-4">
-                <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-brand-teal flex items-center justify-center mx-auto mb-2 shadow-glass-orange">
+                <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-brand-teal flex items-center justify-center mx-auto mb-2 shadow-glass-indigo">
                   <ShieldCheck className="w-6 h-6 text-brand-teal" />
                 </div>
                 <h5 className="text-sm font-extrabold text-white">Message Saved to Database!</h5>
@@ -381,7 +381,7 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-slate-900 border border-brand-border rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-brand-orange transition-colors" 
+                      className="w-full bg-slate-900 border border-brand-border rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-brand-indigo transition-colors" 
                     />
                   </div>
                   <div className="space-y-1">
@@ -392,7 +392,7 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-slate-900 border border-brand-border rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-brand-orange transition-colors" 
+                      className="w-full bg-slate-900 border border-brand-border rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-brand-indigo transition-colors" 
                     />
                   </div>
                 </div>
@@ -404,7 +404,7 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full h-24 bg-slate-900 border border-brand-border rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-brand-orange resize-none transition-colors" 
+                    className="w-full h-24 bg-slate-900 border border-brand-border rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-brand-indigo resize-none transition-colors" 
                   />
                 </div>
 
@@ -415,7 +415,7 @@ export const Landing: React.FC<LandingProps> = ({ setActiveTab }) => {
                 <div className="grid grid-cols-2 gap-4 pt-2">
                   <button 
                     type="submit" 
-                    className="py-3 bg-brand-orange hover:bg-brand-orange/90 rounded-xl text-xs font-bold text-white transition-all duration-300 shadow-glass-orange text-center"
+                    className="py-3 bg-brand-indigo hover:bg-brand-indigo/90 rounded-xl text-xs font-bold text-white transition-all duration-300 shadow-glass-indigo text-center"
                   >
                     Send Message
                   </button>

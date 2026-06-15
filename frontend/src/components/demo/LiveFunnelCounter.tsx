@@ -49,9 +49,9 @@ export const LiveFunnelCounter: React.FC<LiveFunnelCounterProps> = ({ stats }) =
           {profiles.toLocaleString()}
         </span>
       </div>
-      <div className="glass-panel p-5 rounded-2xl border border-brand-border/60 hover:border-brand-orange/30 transition-all duration-300 bg-slate-900/40 text-center">
+      <div className="glass-panel p-5 rounded-2xl border border-brand-border/60 hover:border-brand-indigo/30 transition-all duration-300 bg-slate-900/40 text-center">
         <span className="text-[10px] text-brand-gray uppercase tracking-wider font-extrabold block">Execution Time</span>
-        <span className="text-3xl font-black text-brand-orange mt-1 block tracking-tight">
+        <span className="text-3xl font-black text-sky-400 mt-1 block tracking-tight">
           {seconds.toFixed(2)}s
         </span>
       </div>

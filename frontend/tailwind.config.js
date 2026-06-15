@@ -11,8 +11,9 @@ export default {
           dark: "#090D16",
           card: "#0E1524",
           border: "#1E293B",
-          orange: "#FF6B00",
-          purple: "#6366F1",
+          orange: "#6366F1",
+          indigo: "#6366F1",
+          purple: "#8B5CF6",
           teal: "#14B8A6",
           gray: "#94A3B8"
         }
@@ -23,6 +24,7 @@ export default {
       boxShadow: {
         glass: "0 8px 32px 0 rgba(0, 0, 0, 0.37)",
         "glass-orange": "0 8px 32px 0 rgba(255, 107, 0, 0.15)",
+        "glass-indigo": "0 8px 32px 0 rgba(99, 102, 241, 0.15)",
       }
     },
   },

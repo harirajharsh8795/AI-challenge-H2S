@@ -30,7 +30,7 @@ export const PipelineVisualizer: React.FC = () => {
 
   return (
     <div className="glass-panel p-6 rounded-2xl border border-brand-border/60 bg-slate-900/20 mb-6 w-full">
-      <h4 className="text-[10px] font-bold text-brand-orange uppercase tracking-wider mb-4 text-center sm:text-left">
+      <h4 className="text-[10px] font-bold text-brand-indigo uppercase tracking-wider mb-4 text-center sm:text-left">
         Platform Funnel Optimization Pipeline
       </h4>
       
@@ -43,7 +43,7 @@ export const PipelineVisualizer: React.FC = () => {
               <div 
                 className={`flex-1 p-4 rounded-xl border transition-all duration-300 flex flex-col justify-between ${
                   isCurrent 
-                    ? "bg-brand-purple/20 border-brand-purple shadow-[0_0_15px_rgba(99,102,241,0.35)] scale-[1.02]" 
+                    ? "bg-brand-indigo/10 border-brand-indigo shadow-[0_0_15px_rgba(99,102,241,0.35)] scale-[1.02]" 
                     : isHighlighted 
                       ? "bg-slate-900/60 border-brand-teal/40" 
                       : "bg-slate-900/10 border-brand-border/40 opacity-40"
@@ -59,7 +59,7 @@ export const PipelineVisualizer: React.FC = () => {
                   </div>
                 </div>
                 <div className="mt-3">
-                  <div className="text-xs font-black text-brand-orange">
+                  <div className="text-xs font-black text-sky-400">
                     {st.val}
                   </div>
                   <div className="text-[9px] text-slate-400 mt-1 leading-normal">
@@ -73,13 +73,13 @@ export const PipelineVisualizer: React.FC = () => {
                   <ChevronRight 
                     className={`w-5 h-5 hidden md:block transition-all duration-300 ${
                       idx < activeStage 
-                        ? "text-brand-teal animate-pulse" 
+                        ? "text-brand-indigo animate-pulse" 
                         : "text-slate-700"
                     }`} 
                   />
                   <div className={`w-0.5 h-4 md:hidden transition-all duration-300 ${
                     idx < activeStage 
-                      ? "bg-brand-teal" 
+                      ? "bg-brand-indigo" 
                       : "bg-slate-700"
                   }`} />
                 </div>

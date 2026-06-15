@@ -142,7 +142,7 @@ export const Architecture: React.FC = () => {
       {/* RIGHT COLUMN: Node Detail Inspector */}
       <div className="lg:col-span-6 glass-panel p-6 rounded-2xl border border-brand-border flex flex-col h-auto lg:h-full overflow-visible lg:overflow-hidden bg-[#04060b]">
         <div className="flex items-center gap-2 border-b border-brand-border pb-4 mb-6">
-          <Cpu className="w-5 h-5 text-brand-orange" />
+          <Cpu className="w-5 h-5 text-brand-indigo" />
           <h3 className="font-bold text-sm text-white">Technical Details Inspector</h3>
         </div>
 
@@ -158,7 +158,7 @@ export const Architecture: React.FC = () => {
               className="space-y-6 pr-2 h-auto lg:absolute lg:inset-0 lg:overflow-y-auto"
             >
               <div>
-                <span className="text-[10px] text-brand-orange font-bold uppercase tracking-wider block">
+                <span className="text-[10px] text-brand-indigo font-bold uppercase tracking-wider block">
                   {activeNode.subtitle}
                 </span>
                 <h4 className="text-xl font-extrabold text-white mt-1">
@@ -195,7 +195,7 @@ export const Architecture: React.FC = () => {
                     href={`file:///e:/Desktop/H2S REDROB/India_runs_data_and_ai_challenge/${activeNode.codeFile}#${activeNode.codeLine}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="col-span-2 inline-flex items-center gap-1.5 text-brand-orange hover:underline font-semibold font-mono text-[11px]"
+                    className="col-span-2 inline-flex items-center gap-1.5 text-brand-indigo hover:underline font-semibold font-mono text-[11px]"
                   >
                     <FileCode className="w-3.5 h-3.5" />
                     <span>{activeNode.codeFile}:{activeNode.codeLine}</span>

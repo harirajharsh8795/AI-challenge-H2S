@@ -9,7 +9,7 @@ export const JDUploader: React.FC = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-2 border-b border-brand-border pb-4">
-        <FileText className="w-4 h-4 text-brand-orange" />
+        <FileText className="w-4 h-4 text-brand-indigo" />
         <h4 className="font-bold text-sm">Extracted Role Specifications</h4>
       </div>
 
@@ -52,7 +52,7 @@ export const JDUploader: React.FC = () => {
 
         {/* Must-Have Skills */}
         <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-800/30 border border-brand-border">
-          <CheckSquare className="w-4 h-4 text-brand-orange mt-0.5" />
+          <CheckSquare className="w-4 h-4 text-brand-indigo mt-0.5" />
           <div>
             <span className="text-[10px] text-brand-gray block font-semibold uppercase tracking-wider">
               Must-Have Technical Skills

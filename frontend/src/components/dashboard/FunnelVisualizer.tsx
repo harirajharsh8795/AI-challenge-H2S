@@ -4,19 +4,19 @@ import { motion } from "framer-motion";
 export const FunnelVisualizer: React.FC = () => {
   const stages = [
     { label: "Raw Talent Pool", count: 100000, color: "from-slate-700 to-slate-800", width: "100%", pct: "100%" },
-    { label: "Technical Role Headline Filter", count: 36063, color: "from-red-600 to-orange-600", width: "85%", pct: "36.1%" },
+    { label: "Technical Role Headline Filter", count: 36063, color: "from-red-600 to-rose-600", width: "85%", pct: "36.1%" },
     { label: "Consulting & Honeypot Exclusions", count: 28972, color: "from-amber-600 to-yellow-600", width: "70%", pct: "29.0%" },
     { label: "Experience Bounds [5.0 - 9.0]", count: 14217, color: "from-teal-600 to-green-600", width: "55%", pct: "14.2%" },
     { label: "Stage 1: Sparse Retrieval (BM25)", count: 2000, color: "from-blue-600 to-indigo-600", width: "40%", pct: "2.0%" },
     { label: "Stage 2: Dense Reranking (Bi-Encoder)", count: 500, color: "from-indigo-600 to-purple-600", width: "28%", pct: "0.5%" },
     { label: "Stage 3: Contextual Reranking (Cross-Encoder)", count: 150, color: "from-purple-600 to-pink-600", width: "18%", pct: "0.15%" },
-    { label: "Stage 4: Behavioral Score & Must-Have Boost", count: 100, color: "from-brand-orange to-pink-500", width: "12%", pct: "0.1%" }
+    { label: "Stage 4: Behavioral Score & Must-Have Boost", count: 100, color: "from-brand-indigo to-pink-500", width: "12%", pct: "0.1%" }
   ];
 
   return (
     <div className="glass-panel p-8 rounded-2xl border border-brand-border h-full flex flex-col justify-between relative overflow-hidden">
       {/* Background glowing gradients */}
-      <div className="absolute -right-32 -top-32 w-64 h-64 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -right-32 -top-32 w-64 h-64 bg-brand-indigo/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -left-32 -bottom-32 w-64 h-64 bg-brand-purple/10 rounded-full blur-3xl pointer-events-none" />
 
       <div>

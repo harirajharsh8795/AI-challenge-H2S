@@ -20,7 +20,7 @@ export const WorkspacePreview: React.FC = () => {
   return (
     <div className="glass-panel p-6 rounded-2xl border border-brand-border h-full flex flex-col justify-between relative overflow-hidden select-none font-sans bg-slate-950/40">
       {/* Background radial glow */}
-      <div className="absolute -right-24 -top-24 w-48 h-48 bg-brand-orange/15 rounded-full blur-3xl pointer-events-none animate-pulse" />
+      <div className="absolute -right-24 -top-24 w-48 h-48 bg-brand-indigo/15 rounded-full blur-3xl pointer-events-none animate-pulse" />
       <div className="absolute -left-24 -bottom-24 w-48 h-48 bg-brand-purple/15 rounded-full blur-3xl pointer-events-none" />
 
       {/* Mockup Toolbar Header */}
@@ -40,7 +40,7 @@ export const WorkspacePreview: React.FC = () => {
             <ShieldCheck className="w-2.5 h-2.5" />
             <span>NDCG 1.0</span>
           </span>
-          <span className="flex items-center gap-0.5 text-[9px] font-bold px-2 py-0.5 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange animate-pulse">
+          <span className="flex items-center gap-0.5 text-[9px] font-bold px-2 py-0.5 rounded-full bg-brand-indigo/10 border border-brand-indigo/20 text-brand-indigo animate-pulse">
             <Cpu className="w-2.5 h-2.5" />
             <span>Offline CPU</span>
           </span>
@@ -51,14 +51,14 @@ export const WorkspacePreview: React.FC = () => {
       <div className="flex-1 space-y-4">
         {/* Sidebar / Profile Summary Header */}
         <div className="p-4 rounded-xl bg-slate-900/80 border border-brand-border flex items-start gap-3 shadow-md">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-orange to-brand-purple flex items-center justify-center font-bold text-white flex-shrink-0 shadow-glass-orange">
+          <div className="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-indigo to-brand-purple flex items-center justify-center font-bold text-white flex-shrink-0 shadow-glass-indigo">
             <User className="w-5 h-5 text-white" />
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-center justify-between">
               <h4 className="font-extrabold text-xs text-white tracking-tight flex items-center gap-2">
                 <span>{candidate.id}</span>
-                <span className="text-[9px] bg-brand-orange/10 border border-brand-orange/20 text-brand-orange px-1.5 py-0.2 rounded font-semibold">
+                <span className="text-[9px] bg-brand-indigo/10 border border-brand-indigo/20 text-brand-indigo px-1.5 py-0.2 rounded font-semibold">
                   Rank #1
                 </span>
               </h4>
@@ -69,7 +69,7 @@ export const WorkspacePreview: React.FC = () => {
             </div>
             <p className="text-[10px] text-slate-300 font-medium truncate mt-0.5">{candidate.headline}</p>
             <div className="flex gap-3 text-[9px] text-brand-gray mt-1.5">
-              <span className="flex items-center gap-1"><Award className="w-3 h-3 text-brand-orange" /> {candidate.experience}</span>
+              <span className="flex items-center gap-1"><Award className="w-3 h-3 text-brand-indigo" /> {candidate.experience}</span>
               <span className="flex items-center gap-1"><Zap className="w-3 h-3 text-brand-purple" /> {candidate.company}</span>
             </div>
           </div>

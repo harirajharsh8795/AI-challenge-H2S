@@ -137,13 +137,13 @@ export const Validator: React.FC = () => {
       <div className="lg:col-span-7 glass-panel p-6 rounded-2xl border border-brand-border flex flex-col h-full bg-[#04060b] overflow-hidden">
         <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
           <div className="flex items-center gap-2">
-            <Terminal className="w-4 h-4 text-brand-orange" />
+            <Terminal className="w-4 h-4 text-brand-indigo" />
             <span className="text-xs font-mono text-slate-300">validate_submission.py --run-tests</span>
           </div>
           {validationComplete && (
             <button
               onClick={() => setViewRawLogs(!viewRawLogs)}
-              className="text-[10px] font-bold text-brand-orange hover:underline transition-all duration-350"
+              className="text-[10px] font-bold text-brand-indigo hover:underline transition-all duration-350"
             >
               {viewRawLogs ? "View Summary" : "View Raw Logs"}
             </button>
@@ -160,7 +160,7 @@ export const Validator: React.FC = () => {
           >
             {/* Background decorative elements */}
             <div className="absolute -right-32 -top-32 w-64 h-64 bg-brand-teal/5 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -left-32 -bottom-32 w-64 h-64 bg-brand-orange/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -left-32 -bottom-32 w-64 h-64 bg-brand-indigo/5 rounded-full blur-3xl pointer-events-none" />
 
             <div className="w-16 h-16 rounded-full bg-brand-teal/10 border border-brand-teal/30 flex items-center justify-center shadow-lg">
               <ShieldCheck className="w-8 h-8 text-brand-teal" />
@@ -199,7 +199,7 @@ export const Validator: React.FC = () => {
               } else if (line.includes("STATUS: [PASS]")) {
                 color = "text-white bg-brand-teal/10 px-2 py-0.5 rounded font-bold";
               } else if (line.includes("Initializing")) {
-                color = "text-brand-orange font-bold";
+                color = "text-brand-indigo font-bold";
               }
               
               return (
@@ -212,7 +212,7 @@ export const Validator: React.FC = () => {
             {isRunning && (
               <div className="flex items-center gap-1 text-slate-400">
                 <span className="text-slate-600 select-none mr-2">$</span>
-                <span className="w-1.5 h-3.5 bg-brand-orange animate-pulse" />
+                <span className="w-1.5 h-3.5 bg-brand-indigo animate-pulse" />
               </div>
             )}
           </div>

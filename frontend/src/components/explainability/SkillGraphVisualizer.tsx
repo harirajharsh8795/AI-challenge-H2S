@@ -11,7 +11,7 @@ export const SkillGraphVisualizer: React.FC<SkillGraphVisualizerProps> = ({ cand
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h5 className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-          <Network className="w-4 h-4 text-brand-orange" />
+          <Network className="w-4 h-4 text-brand-indigo" />
           <span>Skill Graph Match Traces</span>
         </h5>
         
@@ -50,7 +50,7 @@ export const SkillGraphVisualizer: React.FC<SkillGraphVisualizerProps> = ({ cand
 
         {/* Expanded Matches */}
         <div className="space-y-1.5">
-          <span className="text-[10px] text-brand-orange font-semibold uppercase tracking-wider block">
+          <span className="text-[10px] text-brand-indigo font-semibold uppercase tracking-wider block">
             Graph Expanded Matches (Distance 1-2)
           </span>
           <div className="flex flex-wrap gap-1.5">
@@ -70,7 +70,7 @@ export const SkillGraphVisualizer: React.FC<SkillGraphVisualizerProps> = ({ cand
               return (
                 <div
                   key={skill}
-                  className="flex items-center gap-1.5 text-[10px] bg-brand-orange/10 border border-brand-orange/20 text-brand-orange px-2.5 py-1 rounded-lg font-medium"
+                  className="flex items-center gap-1.5 text-[10px] bg-brand-indigo/10 border border-brand-indigo/20 text-brand-indigo px-2.5 py-1 rounded-lg font-medium"
                 >
                   <span>{skill}</span>
                   <span className="text-[9px] text-slate-500 font-normal">

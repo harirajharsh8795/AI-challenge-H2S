@@ -62,8 +62,8 @@ export const Demo: React.FC = () => {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center h-96 w-full gap-3">
-        <div className="w-8 h-8 rounded-full border-2 border-brand-orange border-t-transparent animate-spin" />
-        <div className="text-brand-orange animate-pulse text-xs font-bold tracking-wider uppercase">
+        <div className="w-8 h-8 rounded-full border-2 border-brand-indigo border-t-transparent animate-spin" />
+        <div className="text-brand-indigo animate-pulse text-xs font-bold tracking-wider uppercase">
           Connecting to Redrob Copilot API...
         </div>
       </div>

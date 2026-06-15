@@ -39,7 +39,7 @@ export const ShortlistTable: React.FC = () => {
         {isAnalyzing && (
           <div className="absolute inset-0 bg-brand-dark/40 backdrop-blur-sm flex items-center justify-center z-20 transition-all duration-300 rounded-b-2xl">
             <div className="flex flex-col items-center gap-3">
-              <div className="w-8 h-8 rounded-full border-2 border-brand-orange border-t-transparent animate-spin" />
+              <div className="w-8 h-8 rounded-full border-2 border-brand-indigo border-t-transparent animate-spin" />
               <span className="text-xs text-brand-gray font-medium">Re-calculating semantic rankings...</span>
             </div>
           </div>
@@ -66,7 +66,7 @@ export const ShortlistTable: React.FC = () => {
                   onClick={() => handleSelect(cand)}
                   className={`h-[110px] p-4 rounded-xl border cursor-pointer transition-all duration-300 flex items-center gap-4 justify-between relative group select-none ${
                     isSelected
-                      ? "bg-slate-800/80 border-brand-orange shadow-glass-orange"
+                      ? "bg-slate-800/80 border-brand-indigo shadow-glass-indigo"
                       : "bg-slate-900/40 border-brand-border hover:border-slate-800 hover:bg-slate-800/30"
                   }`}
                 >
@@ -74,9 +74,11 @@ export const ShortlistTable: React.FC = () => {
                   <div className="flex items-center gap-4 min-w-0 flex-1 h-full">
                     {/* Rank indicator */}
                     <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-extrabold text-xs flex-shrink-0 ${
-                      cand.rank <= 3
-                        ? "bg-brand-orange text-white"
-                        : "bg-slate-800 text-brand-gray"
+                      cand.rank === 1
+                        ? "bg-amber-500 text-white"
+                        : cand.rank <= 3
+                          ? "bg-brand-indigo text-white"
+                          : "bg-slate-800 text-brand-gray"
                     }`}>
                       #{cand.rank}
                     </div>
@@ -120,19 +122,19 @@ export const ShortlistTable: React.FC = () => {
                   <div className="flex items-center gap-4 flex-shrink-0 h-full justify-end">
                     <div className="text-right">
                       <span className="text-[9px] text-brand-gray block uppercase tracking-wider font-semibold">Match Score</span>
-                      <span className="text-sm font-black text-brand-orange">
+                      <span className="text-sm font-black text-brand-indigo">
                         {cand.score.toFixed(4)}
                       </span>
                     </div>
-                    <button className="hidden sm:flex items-center px-3.5 py-1.5 rounded-lg bg-brand-orange/10 border border-brand-orange/20 text-brand-orange font-bold text-xs hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-sm">
+                    <button className="hidden sm:flex items-center px-3.5 py-1.5 rounded-lg bg-brand-indigo/10 border border-brand-indigo/20 text-brand-indigo font-bold text-xs hover:bg-brand-indigo hover:text-white transition-all duration-300 shadow-sm">
                       Inspect
                     </button>
                   </div>
 
                   {/* Premium Hover Tooltip Preview */}
-                  <div className="absolute left-[80px] top-[-92px] opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-250 z-40 w-[340px] p-3.5 bg-slate-950/95 border border-brand-orange/30 rounded-xl shadow-2xl backdrop-blur-md flex flex-col gap-1.5 transform scale-95 group-hover:scale-100">
+                  <div className="absolute left-[80px] top-[-92px] opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-250 z-40 w-[340px] p-3.5 bg-slate-950/95 border border-brand-indigo/30 rounded-xl shadow-2xl backdrop-blur-md flex flex-col gap-1.5 transform scale-95 group-hover:scale-100">
                     <div className="flex justify-between items-center border-b border-brand-border pb-1">
-                      <span className="font-extrabold text-[10px] text-brand-orange uppercase tracking-wider">
+                      <span className="font-extrabold text-[10px] text-brand-indigo uppercase tracking-wider">
                         Rank #{cand.rank} Preview
                       </span>
                       <span className="text-[10px] text-brand-teal font-extrabold">

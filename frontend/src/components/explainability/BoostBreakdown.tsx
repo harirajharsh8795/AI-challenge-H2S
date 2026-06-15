@@ -20,7 +20,7 @@ export const BoostBreakdown: React.FC<BoostBreakdownProps> = ({ candidate }) => 
   const parameters = [
     { label: "Semantic Reranking Score", value: breakdown.semantic_score, max: 1.0, color: "bg-brand-purple" },
     { label: "Experience Fit Score", value: breakdown.experience_score, max: 1.0, color: "bg-brand-teal" },
-    { label: "Product Company History", value: breakdown.product_score, max: 1.0, color: "bg-brand-orange" },
+    { label: "Product Company History", value: breakdown.product_score, max: 1.0, color: "bg-brand-indigo" },
     { label: "Platform Activity & Availability", value: breakdown.behavioral_score, max: 1.0, color: "bg-amber-500" },
     { label: "Preferred Skills Overlap", value: breakdown.preferred_score, max: 1.0, color: "bg-blue-500" },
     { label: "Location Alignment", value: breakdown.location_score, max: 1.0, color: "bg-pink-500" },
