@@ -1,0 +1,92 @@
+{
+  "must_have": [
+    "python",
+    "transformers",
+    "rag",
+    "embeddings",
+    "vector",
+    "faiss",
+    "qdrant",
+    "pinecone",
+    "langchain"
+  ],
+  "preferred": [
+    "llm",
+    "lora",
+    "peft",
+    "qlora"
+  ],
+  "experience_range": {
+    "min_years": 5.0,
+    "max_years": 9.0
+  },
+  "seniority": "principal",
+  "implicit_signals": [
+    "Parsed via regex \u2014 Gemini API not available"
+  ],
+  "anti_patterns": [],
+  "culture_dna": [],
+  "interview_focus": [],
+  "weighted_skills": {
+    "python": 1.0,
+    "transformers": 1.0,
+    "llm": 1.5,
+    "rag": 1.0,
+    "lora": 1.0,
+    "peft": 1.0,
+    "qlora": 1.0,
+    "embeddings": 1.5,
+    "vector": 1.0,
+    "faiss": 1.0,
+    "qdrant": 1.0,
+    "pinecone": 1.3,
+    "langchain": 1.3
+  },
+  "excluded": [
+    "consulting-only candidates",
+    "academic researchers without production systems",
+    "langchain-only developers",
+    "computer vision-only engineers",
+    "speech-only engineers"
+  ],
+  "locations": [
+    "Noida",
+    "Pune",
+    "Hyderabad",
+    "Mumbai",
+    "Delhi NCR"
+  ],
+  "jd_hash": "a9937e9fbcd6657c3c3d74b835ca3abd",
+  "semantic_clusters": {
+    "retrieval": [
+      "embeddings",
+      "dense retrieval",
+      "vector search",
+      "semantic search",
+      "ranking",
+      "faiss",
+      "pinecone",
+      "weaviate",
+      "qdrant",
+      "bm25"
+    ],
+    "evaluation": [
+      "ndcg",
+      "map",
+      "mrr",
+      "offline evaluation",
+      "a/b testing"
+    ],
+    "llm": [
+      "lora",
+      "qlora",
+      "peft",
+      "fine tuning"
+    ],
+    "systems": [
+      "python",
+      "docker",
+      "kubernetes"
+    ]
+  }
+}
